@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="./imgs/favicon.png">
+    <link rel="icon" href="./src/imgs/favicon.png" type="icon">
+    <script src="./src/scrpt/index.js" defer></script>
     <title>Home Page</title>
 </head>
-<body>
-    <H1>
-        WELCOME!
-    </H1>
+<body onload="getPage()" id="body">
+    <H1>Home Page</H1>
+    <button id="logbut" onclick=""></button>
+    <div>
+        <label for="num">Course Number:</label>
+        <input type="number" id="num" min="1" placeholder="">
+        <label for="code">Course Code:</label>
+        <select name="code" id="code">
+            <option value="">---</option>
+        </select>
+        <button type="submit" onclick="filter()">Filter</button>
+    </div>
+    <label for="json">Courses:</label>
+    <pre id="json"></pre>
 </body>
 </html>
