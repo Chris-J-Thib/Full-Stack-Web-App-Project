@@ -1,20 +1,26 @@
-let loaded;
+let loaded,add;
 
-async function getPage(req){
+async function getCourseList(req){
     let body = document.getElementById('body');
     let log = document.getElementById('logbut');
-    let pre = document.getElementById("json");
+    let courses = document.createElement('div');
+    let acc = document.getElementById('acc');
+
+    console.log(sessionStorage);
     loaded = false;
-    if(req) {
-        link = "/courses/" + req;
-    } else {
-        link = "/courses";
-    }
+    courses.id = 'courseList';
+
+    if(req) link = "/courses/" + req;
+    else link = "/courses";
 
     if (sessionStorage.getItem("id") != null) {
+        add = true;
+        acc.style.display = 'inline';
         log.innerText = "Logout";
         log.setAttribute('onclick', 'logout()');
     } else {
+        add = false;
+        acc.style.display = 'none';
         log.innerText = "Login";
         log.setAttribute('onclick', 'login()');
     }
@@ -35,10 +41,31 @@ async function getPage(req){
             select.appendChild(opt);
         });
         loaded = true;
-    }
-    pre.innerText = JSON.stringify(data,null, 4);
-    body.appendChild(pre);
-    console.log(sessionStorage);
+    } else body.removeChild(document.getElementById('courseList'));
+
+    data.forEach(element => {
+        let course = document.createElement('div');        
+        let but = document.createElement('button');
+        let lab = document.createElement('label');
+        lab.setAttribute('for', element['code']+element['num']);
+        but.innerText = "Add";
+        but.id = element['code']+element['num'];
+        but.setAttribute('onclick', `addCourse("${element['code']+element['num']}")`);
+        for (const key in element) {
+            if(key == 'credits') continue;
+            value = element[key];
+            let div = document.createElement('div');
+            div.className = key;
+            div.innerText = value;
+            course.appendChild(div);
+        }
+        if(sessionStorage.getItem("id") != null) {
+            course.appendChild(but);
+            course.appendChild(lab);
+        }
+        courses.appendChild(course);
+    });
+    body.appendChild(courses);
 }
 
 async function filter(){
@@ -46,13 +73,4 @@ async function filter(){
     let code = document.getElementById('code').value;
     let req = `?num=${num}&code=${code}`;
     getPage(req);
-}
-
-function logout(){
-    sessionStorage.removeItem('id');
-    window.location.replace("/")
-}
-
-function login(){
-    window.location.href = "login.html"
 }

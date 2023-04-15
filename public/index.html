@@ -6,19 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./src/imgs/favicon.png" type="icon">
     <script src="./src/scrpt/index.js" defer></script>
+    <script src="./src/scrpt/account.js"></script>
     <title>Home Page</title>
 </head>
-<body onload="getPage()" id="body">
+<body onload="getCourseList()" id="body">
     <H1>Home Page</H1>
-    <button id="logbut" onclick=""></button>
+    <div>
+        <button id="acc" onclick="window.location.href='./account.html'">Account</button>
+        <button id="logbut" onclick=""></button>
+    </div>
     <div>
         <label for="num">Course Number:</label>
-        <input type="number" id="num" min="1" placeholder="">
+        <input onkeyup="filter()" type="number" id="num" min="1" placeholder="">
         <label for="code">Course Code:</label>
-        <select name="code" id="code">
+        <select onchange="filter()" name="code" id="code">
             <option value="">---</option>
         </select>
-        <button type="submit" onclick="filter()">Filter</button>
     </div>
     <label for="json">Courses:</label>
     <pre id="json"></pre>
