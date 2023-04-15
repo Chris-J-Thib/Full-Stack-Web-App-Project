@@ -1,4 +1,4 @@
-async function signin(){
+async function login(){
     let un = document.getElementById('un').value;
     let pw = document.getElementById('pw').value;
     let req = {username: un, password: pw};
