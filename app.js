@@ -51,8 +51,6 @@ app.get("/account/:id", (req, res) => {
 app.post("/users/login", (req, res) =>{
     un = req.body.username;
     pw = req.body.password;
-    // console.log(req);
-    // console.log(un + ' ' + pw);
     let error = {"error": "Username " + un + " does not exist."};
     fs.readFile(users, (err, content) => {
         if(err) return err;
@@ -126,7 +124,6 @@ app.patch("/account/:id/courses/add", (req,res)=>{
             if(err2) return err2;
             content = JSON.parse(content.toString());
             user = content.filter(u => u.id == id)[0];
-            console.log(user);
             if(!user) {
                 res.statusCode = 401;
                 res.json({"error":"Invalid user id."});
@@ -169,7 +166,6 @@ app.patch("/account/:id/courses/remove", (req,res)=>{
             if(err2) return err2;
             content = JSON.parse(content.toString());
             user = content.filter(u => u.id == id)[0];
-            console.log(user);
             if(!user) {
                 res.statusCode = 401;
                 res.json({"error":"Invalid user id."});
@@ -179,14 +175,21 @@ app.patch("/account/:id/courses/remove", (req,res)=>{
                 res.json({"error":"Course doesn't exist."});
                 return;
             } else {
-                delete user.courses[user.courses.findIndex(c => c.code == co.code && c.num == co.num)];
+                let index = user.courses.findIndex(c => c.code == co.code && c.num == co.num);
+                console.log(index);
+                console.log(user.courses);
+                
+                user.courses.splice(index, 1);
+                
+                console.log(user.courses);
                 content[id - 1] = user;
+                
                 fs.writeFile(users, JSON.stringify(content,null,4), (err) =>{
                     if(err) return err;
                     res.statusCode = 200;
                     res.json(user);
                     return;
-                });            
+                });
             }
         })
     })

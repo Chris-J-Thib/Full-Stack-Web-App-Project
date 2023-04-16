@@ -9,7 +9,9 @@
     <script src="src/scrpt/signup.js" defer></script>
     <title>Signup</title>
 </head>
-
+<nav>
+    <button id="home" onclick='window.location.href="/index.html"'>Home</button>
+</nav>
 <body id="body">
     <h1>User Signup</h1>
     <div>
@@ -18,14 +20,10 @@
         <input type="text" id="un">
         <label for="password">Password:</label>
         <input type="password" id="pw1">
-        <label for="password">Re-Password:</label>
+        <label for="password">Confirm Password:</label>
         <input type="password" id="pw2">
         <button onclick="signup()">Signup</button>
-        <a href="/login.html">
-            <button>Login</button>
-        </a>
+        <button onclick='window.location.href="/login.html"'>Login</button>
     </div>
-
 </body>
-
 </html>

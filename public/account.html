@@ -5,10 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./src/imgs/favicon.png" type="icon">
-    <script src="./src/scrpt/account.js"></script>
+    <script src="./src/scrpt/account.js" defer></script>
     <title>Account</title>
 </head>
-<body onload="checkStatus()">
-    
+<nav>
+    <button id="home" onclick='window.location.href="/index.html"'>Home</button>
+    <button id="logbut" onclick="logout()">Logout</button>
+</nav>
+<body id="body" onload="checkStatus()">
+    <div>
+        <h1 id="user"></h1>
+        <label for="courseList">Courses:</label>
+    </div>
 </body>
 </html>

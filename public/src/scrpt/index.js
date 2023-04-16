@@ -1,26 +1,28 @@
-let loaded,add;
-
 async function getCourseList(req){
-    let body = document.getElementById('body');
+    let body = document.body;
     let log = document.getElementById('logbut');
     let courses = document.createElement('div');
     let acc = document.getElementById('acc');
+    let add;
 
-    console.log(sessionStorage);
     loaded = false;
     courses.id = 'courseList';
+
+    if(document.getElementById('courseList')) body.removeChild(document.getElementById('courseList'));
 
     if(req) link = "/courses/" + req;
     else link = "/courses";
 
     if (sessionStorage.getItem("id") != null) {
         add = true;
-        acc.style.display = 'inline';
+        acc.setAttribute('onclick', "window.location.href='./account.html'");
+        acc.innerText = 'Account';
         log.innerText = "Logout";
         log.setAttribute('onclick', 'logout()');
     } else {
         add = false;
-        acc.style.display = 'none';
+        acc.setAttribute('onclick', "window.location.href='./signup.html'");
+        acc.innerText = 'Signup';
         log.innerText = "Login";
         log.setAttribute('onclick', 'login()');
     }
@@ -28,20 +30,26 @@ async function getCourseList(req){
     const res = await fetch(link);
     const data = await res.json();
     
-    if(!loaded){
+
+
+    if(!document.getElementById('code')){
         let opts = new Set();
         data.forEach(e => {
             opts.add(e.code);
         });
-        select = document.getElementById('code');
+        select = document.getElementById('pre-code');
+        select.id = 'code';
         opts.forEach(e => {
             let opt = document.createElement('option');
             opt.value = e;
             opt.text = e;
             select.appendChild(opt);
         });
-        loaded = true;
-    } else body.removeChild(document.getElementById('courseList'));
+    }
+
+    
+
+    
 
     data.forEach(element => {
         let course = document.createElement('div');        
@@ -50,7 +58,7 @@ async function getCourseList(req){
         lab.setAttribute('for', element['code']+element['num']);
         but.innerText = "Add";
         but.id = element['code']+element['num'];
-        but.setAttribute('onclick', `addCourse("${element['code']+element['num']}")`);
+        but.setAttribute('onclick', `setReg("${element['code']+element['num']}","add")`);
         for (const key in element) {
             if(key == 'credits') continue;
             value = element[key];
@@ -72,5 +80,5 @@ async function filter(){
     let num = document.getElementById('num').value;
     let code = document.getElementById('code').value;
     let req = `?num=${num}&code=${code}`;
-    getPage(req);
+    getCourseList(req);
 }

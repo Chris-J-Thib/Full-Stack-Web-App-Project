@@ -9,17 +9,17 @@
     <script src="./src/scrpt/account.js"></script>
     <title>Home Page</title>
 </head>
+<nav>
+    <button id="logbut" onclick=""></button>
+    <button id="acc" onclick=""></button>
+</nav>
 <body onload="getCourseList()" id="body">
     <H1>Home Page</H1>
-    <div>
-        <button id="acc" onclick="window.location.href='./account.html'">Account</button>
-        <button id="logbut" onclick=""></button>
-    </div>
     <div>
         <label for="num">Course Number:</label>
         <input onkeyup="filter()" type="number" id="num" min="1" placeholder="">
         <label for="code">Course Code:</label>
-        <select onchange="filter()" name="code" id="code">
+        <select onchange="filter()" name="code" id="pre-code">
             <option value="">---</option>
         </select>
     </div>
