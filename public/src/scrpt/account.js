@@ -41,13 +41,14 @@ async function setReg(course, state){
     else msg[0].innerText = notify;
 
     if(state == 'remove'){
-        body.removeChild(document.getElementById("courseList"));
+        main.removeChild(document.getElementById("courseList"));
         load(0);
     }
 }
 
 async function load(first){
-    let body = document.body;
+
+    let main = document.getElementById('main');
     let courses = document.createElement('div');
 
     courses.id = 'courseList';
@@ -64,13 +65,16 @@ async function load(first){
         let course = document.createElement('div');        
         let but = document.createElement('button');
         let lab = document.createElement('label');
+        course.className = 'course';
         lab.setAttribute('for', element['code']+element['num']);
         but.innerText = "Remove";
         but.id = element['code']+element['num'];
         but.setAttribute('onclick', `setReg("${element['code']+element['num']}", "remove")`);
+        but.className = 'remove';
         for (const key in element) {
             if(key == 'credits') continue;
             value = element[key];
+            if(key == 'name') value = '-'+'\xa0'.repeat(2) + value;
             let div = document.createElement('div');
             div.className = key;
             div.innerText = value;
@@ -80,6 +84,6 @@ async function load(first){
         course.appendChild(lab);
         courses.appendChild(course);
     });
-    body.appendChild(courses);
+    main.appendChild(courses);
     
 }

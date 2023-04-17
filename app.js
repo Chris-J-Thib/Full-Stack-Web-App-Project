@@ -176,12 +176,7 @@ app.patch("/account/:id/courses/remove", (req,res)=>{
                 return;
             } else {
                 let index = user.courses.findIndex(c => c.code == co.code && c.num == co.num);
-                console.log(index);
-                console.log(user.courses);
-                
                 user.courses.splice(index, 1);
-                
-                console.log(user.courses);
                 content[id - 1] = user;
                 
                 fs.writeFile(users, JSON.stringify(content,null,4), (err) =>{

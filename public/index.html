@@ -5,25 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./src/imgs/favicon.png" type="icon">
+    <link rel="stylesheet" href="./src/style/style.css">
+    <link rel="stylesheet" href="./src/style/listPage.css">
     <script src="./src/scrpt/index.js" defer></script>
     <script src="./src/scrpt/account.js"></script>
     <title>Home Page</title>
 </head>
-<nav>
-    <button id="logbut" onclick=""></button>
-    <button id="acc" onclick=""></button>
-</nav>
-<body onload="getCourseList()" id="body">
-    <H1>Home Page</H1>
-    <div>
-        <label for="num">Course Number:</label>
-        <input onkeyup="filter()" type="number" id="num" min="1" placeholder="">
-        <label for="code">Course Code:</label>
-        <select onchange="filter()" name="code" id="pre-code">
-            <option value="">---</option>
-        </select>
-    </div>
-    <label for="json">Courses:</label>
-    <pre id="json"></pre>
+<body onload="getCourseList()">
+    <nav>
+        <button id="logbut" onclick=""></button>
+        <button id="acc" onclick=""></button>
+    </nav>
+    <main id="main">
+        <H1>Home Page</H1>
+        <div id="info">
+            <div>
+                <label for="num">Course Number:</label>
+                <input onkeyup="filter()" type="number" id="num" min="1" placeholder="">
+            </div>
+            <div>
+                <label for="code">Course Code:</label>
+                <select onchange="filter()" name="code" id="pre-code">
+                    <option value="">---</option>
+                </select>
+            </div>
+        </div>
+        <label for="courseList">Courses:</label>
+    </main>
 </body>
 </html>

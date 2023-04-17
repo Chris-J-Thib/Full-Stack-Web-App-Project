@@ -1,5 +1,5 @@
 async function getCourseList(req){
-    let body = document.body;
+    let main = document.getElementById('main');
     let log = document.getElementById('logbut');
     let courses = document.createElement('div');
     let acc = document.getElementById('acc');
@@ -8,7 +8,7 @@ async function getCourseList(req){
     loaded = false;
     courses.id = 'courseList';
 
-    if(document.getElementById('courseList')) body.removeChild(document.getElementById('courseList'));
+    if(document.getElementById('courseList')) main.removeChild(document.getElementById('courseList'));
 
     if(req) link = "/courses/" + req;
     else link = "/courses";
@@ -55,13 +55,16 @@ async function getCourseList(req){
         let course = document.createElement('div');        
         let but = document.createElement('button');
         let lab = document.createElement('label');
+        course.className = 'course';
         lab.setAttribute('for', element['code']+element['num']);
         but.innerText = "Add";
         but.id = element['code']+element['num'];
         but.setAttribute('onclick', `setReg("${element['code']+element['num']}","add")`);
+        but.className = 'add';
         for (const key in element) {
             if(key == 'credits') continue;
             value = element[key];
+            if(key == 'name') value = '-'+'\xa0'.repeat(2) + value;
             let div = document.createElement('div');
             div.className = key;
             div.innerText = value;
@@ -73,7 +76,7 @@ async function getCourseList(req){
         }
         courses.appendChild(course);
     });
-    body.appendChild(courses);
+    main.appendChild(courses);
 }
 
 async function filter(){

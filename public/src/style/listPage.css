@@ -1,0 +1,97 @@
+#info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+#info div {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+label[for='courseList'] {
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    font-weight: 600;
+    font-size: x-large;
+    color: var(--scndText);
+}
+
+#courseList {
+    visibility: visible;
+}
+
+#courseList:empty {
+    visibility: hidden;
+}
+
+.course {
+    padding: 16px;
+    margin: 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-content:space-around;
+}
+
+
+.course div {
+    outline: none;
+}
+
+.code, .num, .name {
+    position: relative;
+    width: fit-content;
+    margin-bottom: 16px;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.name {
+    margin-left: 16px;
+}
+
+.description {
+    margin-top: auto;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: var(--scndText);
+}
+
+.add, .remove {
+    margin-top: 28px;
+}
+
+.add + label, .remove + label {
+    margin-top: 28px;
+}
+
+@media only screen and (max-width: 980px) {
+    #info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #info div {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #info {
+        margin-top: 160px;
+        width: 90%;
+    }
+    #num {
+        width: calc(100vw/6);
+    }
+}

@@ -1,0 +1,67 @@
+:root {
+   --bg: #f3aa92;
+   --fg: #fefefe;
+   --trim: #5375e2;
+   --button: #f65868;
+   --mainText: #5c616e;
+   --scndText: #7791a1;
+   --border: 1px solid var(--trim);
+   --borderRad: 8px;
+}
+
+* {
+    height: fit-content;
+    width: fit-content;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 8px;
+    margin: 8px;
+}
+
+nav {
+    position: absolute;
+    top: 110px;
+    right: 48px;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--fg);
+    border: var(--border);
+    border-radius: var(--borderRad);
+}
+
+div {
+    background-color: var(--fg);
+    outline: var(--border);
+    border-radius: 4px;
+}
+
+h1 {
+    font-size:xx-large;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row-reverse;
+    align-items:flex-start;
+    background-color: var(--bg);
+    color: var(--mainText);
+}
+
+button {
+    background-color: var(--button) ;
+    color: var(--fg);
+    border: var(--border);
+    border-radius: var(--borderRad);
+    padding: 8px 16px 8px 16px;
+    font-size: medium;
+    font-weight: 600;
+}
+
+input, select {
+    color: var(--trim);
+    background-color: var(--fg);
+    border: var(--border);
+    border-radius: var(--borderRad);
+    appearance: none;
+    -moz-appearance: textfield;
+}

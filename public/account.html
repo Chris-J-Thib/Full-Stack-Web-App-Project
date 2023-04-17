@@ -5,17 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./src/imgs/favicon.png" type="icon">
+    <link rel="stylesheet" href="./src/style/style.css">
+    <link rel="stylesheet" href="./src/style/listPage.css">
     <script src="./src/scrpt/account.js" defer></script>
     <title>Account</title>
 </head>
-<nav>
-    <button id="home" onclick='window.location.href="/index.html"'>Home</button>
-    <button id="logbut" onclick="logout()">Logout</button>
-</nav>
-<body id="body" onload="checkStatus()">
-    <div>
-        <h1 id="user"></h1>
+<body onload="checkStatus()">
+    <nav>
+        <button id="home" onclick='window.location.href="/index.html"'>Home</button>
+        <button id="logbut" onclick="logout()">Logout</button>
+    </nav>
+    <main id="main">
+        <div id="info">
+            <label for="user">User:</label>
+            <h1 id="user"></h1>
+        </div>
         <label for="courseList">Courses:</label>
-    </div>
+    </main>
 </body>
 </html>

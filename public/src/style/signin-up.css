@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav {
+    position: unset;
+}
+
+#resp {
+    color: var(--button);
+}
+
+main  {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+}
+
+#pw, #pw2 {
+    margin-bottom: 24px;
+}
+
+main > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 50vw;
+    padding-bottom: 32px;
+}

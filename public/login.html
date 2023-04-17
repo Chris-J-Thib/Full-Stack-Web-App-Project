@@ -5,23 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./src/imgs/favicon.png" type="icon">
+    <link rel="stylesheet" href="./src/style/style.css">
+    <link rel="stylesheet" href="./src/style/signin-up.css">
     <script src="src/scrpt/login.js" defer></script>
     <title>Login</title>
 </head>
-<nav>
-    <button id="home" onclick='window.location.href="/index.html"'>Home</button>
-</nav>
-<body id="body">
-    <h1>User Login</h1>
-    <div>
-        <label id="resp"></label>
-        <label for="username">Username:</label>
-        <input type="text" id="un">
-        <label for="password">Password:</label>
-        <input type="password" id="pw">
-        <button onclick='login()'>Login</button>
-        <button onclick='window.location.href="/signup.html"'>Signup</button>
-    </div>
-    
+<body>
+    <nav>
+        <button id="home" onclick='window.location.href="/index.html"'>Home</button>
+    </nav>
+    <main id="main">
+        <h1>User Login</h1>
+        <div>
+            <label id="resp"></label>
+            <label for="username">Username:</label>
+            <input type="text" id="un">
+            <label for="password">Password:</label>
+            <input type="password" id="pw">
+            <button onclick='login()'>Login</button>
+            <button onclick='window.location.href="/signup.html"'>Signup</button>
+        </div>
+    </main>
 </body>
 </html>

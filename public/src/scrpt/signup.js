@@ -7,6 +7,8 @@ async function signup(){
 
     if(pw1!=pw2){
         document.getElementById('resp').innerText = "Passwords do not match.";
+    } else if(!un){
+        document.getElementById('resp').innerText = "Please enter a vaild username.";
     } else if(!pw1){
         document.getElementById('resp').innerText = "Please enter a vaild password.";
     } else {

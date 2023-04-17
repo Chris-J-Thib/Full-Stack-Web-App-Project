@@ -1,0 +1,9 @@
+div {
+    background-color: var(--fg);
+    outline: 1px solid var(--trim);
+    border-radius: 4px;
+}
+
+.course div {
+    outline: none;
+}
